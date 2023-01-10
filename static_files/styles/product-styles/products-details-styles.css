@@ -1,0 +1,323 @@
+@import "settings-styles.css";
+
+body {
+    background-attachment: fixed;
+    background-size: 120%;
+}
+
+/* Additional filter section styles depending on details page */
+
+.filter-container {
+    margin-left: 370px;
+    position: absolute;
+    opacity: 80%;
+    background-color: rgba(0, 0, 0, 0.69);
+    border-top-color: rgba(166, 166, 166, 0.84);
+    border-left-color: rgba(166, 166, 166, 0.84);
+    border-right-color: rgba(0, 0, 0, 0.25);
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+}
+
+.filter-container:hover {
+    opacity: 100%;
+    transform: scale(1.1);
+}
+
+.filter-form-container {
+    margin-left: 460px;
+    margin-top: 45px;
+    opacity: 0;
+    display: none;
+}
+
+.setting-image {
+    filter: invert(100%) brightness(200%);
+}
+
+.filter-button {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.69);
+    opacity: 80%;
+}
+
+.filter-button:hover {
+    opacity: 100%;
+}
+
+/*****/
+
+.product-image {
+    width: 400px;
+    height: 25.031em;
+    border-radius: 15px;
+}
+
+.page-title {
+    margin-left: 570px;
+    font-size: 24px;
+    font-family: Oswald;
+    background-color: #4d4d4d;
+    color: white;
+    width: 300px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+
+.main-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 50px;
+}
+
+.image-container {
+    margin-left: 300px;
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-top-color: rgba(201, 201, 201, 0.73);
+    border-left-color: rgba(201, 201, 201, 0.73);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+    border-right-color: rgba(0, 0, 0, 0.35);
+}
+
+.description-container, .price-container, .quantity-container, .type-container {
+    margin-left: 750px;
+    position: absolute;
+    font-size: 18px;
+    font-family: Oswald;
+    width: 400px;
+    text-align: justify;
+}
+
+.description-container {
+    margin-top: -370px;
+}
+
+.price-container {
+    margin-top: -250px;
+}
+
+.quantity-container {
+    margin-top: -220px;
+}
+
+.type-container {
+    margin-top: -190px;
+}
+
+.buttons-container {
+    margin-left: 745px;
+    margin-top: -100px;
+    position: absolute;
+}
+
+.edit-button, .delete-button, .back-button, .add-comment-button {
+    margin-left: 5px;
+    font-size: 17px;
+    font-family: Oswald;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    padding: 4px 15px;
+    border-radius: 10px;
+    border-style: solid;
+    border-top-color: rgba(201, 201, 201, 0.73);
+    border-left-color: rgba(201, 201, 201, 0.73);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+    border-right-color: rgba(0, 0, 0, 0.35);
+    transition: 0.3s;
+}
+
+.edit-button:hover, .delete-button:hover,
+.back-button:hover, .add-comment-button:hover,
+.delete-comment:hover, .edit-comment:hover, .edit-comment-check:hover {
+    box-shadow: 4px 4px 3px gray;
+}
+
+.back-button {
+    margin-left: 750px;
+    margin-top: -60px;
+    position: absolute;
+}
+
+.add-comment-button {
+    margin-left: 832px;
+    margin-top: -60px;
+    position: absolute;
+}
+
+.add-comment-container {
+    margin-top: 40px;
+    margin-left: 450px;
+    position: absolute;
+    border-color: #555C66;
+    border-radius: 30px;
+    width: 400px;
+    height: 40px;
+    opacity: 0;
+    display: none;
+    transition: 0.4s;
+}
+
+.add-comment-form {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.add-comment-input {
+    font-family: Oswald;
+    border-style: solid;
+    border-radius: 15px;
+    width: 300px;
+}
+
+.add-comment-input:focus {
+    outline: none;
+}
+
+.submit-comment-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.69);
+    border-top-color: rgba(166, 166, 166, 0.84);
+    border-left-color: rgba(166, 166, 166, 0.84);
+    border-right-color: rgba(0, 0, 0, 0.25);
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin-top: -14px;
+    margin-left: 15px;
+    opacity: 80%;
+    transition: 0.3s;
+}
+
+.submit-comment-button:hover {
+    opacity: 100%;
+}
+
+.comment-image {
+    margin-top: 5px;
+    margin-left: 2px;
+    width: 80%;
+    height: 80%;
+    filter: invert(100%) brightness(200%);
+}
+
+.comments-title {
+    margin-top: 140px;
+    margin-left: 520px;
+    font-size: 25px;
+    font-family: Oswald;
+}
+
+.filter-section {
+    height: 150px;
+}
+
+.comment-container {
+    margin-left: 350px;
+    margin-bottom: 100px;
+}
+
+.commentator-profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    border-style: solid;
+    border-top-color: rgba(201, 201, 201, 0.73);
+    border-left-color: rgba(201, 201, 201, 0.73);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+    border-right-color: rgba(0, 0, 0, 0.35);
+}
+
+.commentator-username, .delete-comment, .edit-comment, .edit-comment-check {
+    border-style: solid;
+    border-top-color: rgba(201, 201, 201, 0.73);
+    border-left-color: rgba(201, 201, 201, 0.73);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+    border-right-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.commentator-username {
+    font-size: 20px;
+    font-family: Oswald;
+    margin-top: -100px;
+    margin-left: 120px;
+    width: 70px;
+}
+
+.delete-comment, .edit-comment {
+    margin-top: 10px;
+    position: absolute;
+    width: 30px;
+    height: 28px;
+    transition: 0.3s;
+}
+
+.delete-comment {
+    margin-left: 100px;
+}
+
+.edit-comment {
+    margin-left: 144px;
+}
+
+.delete-comment-logo {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%) brightness(100%);
+}
+
+.edit-comment-logo {
+    width: 70%;
+    height: 70%;
+    filter: invert(100%) brightness(100%);
+    margin-top: 4px;
+}
+
+.edit-comment-form {
+    position: absolute;
+    margin-left: 300px;
+    margin-top: -95px;
+    opacity: 0;
+    display: none;
+    transition: 0.3s;
+}
+
+.edit-comment-check {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -5px;
+    width: 34px;
+    height: 34px;
+    transition: 0.3s;
+}
+
+.edit-comment-check-img {
+    width: 135%;
+    height: 95%;
+    filter: invert(100%) brightness(100%);
+    margin-left: -2px;
+    margin-top: 2px;
+}
+
+.comment {
+    font-family: Oswald;
+    font-size: 18px;
+    width: 600px;
+    margin-left: 120px;
+    margin-top: -5px;
+    position: absolute;
+}
+
+.swal2-title, .swal2-html-container, .swal2-confirm, .swal2-cancel {
+    font-family: Oswald;
+}

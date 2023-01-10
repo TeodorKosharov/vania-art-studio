@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filters %}
+
+{% block title %}
+    <title>Детайли</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product-styles/products-details-styles.css' %}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'scripts/products/alertDeleteProduct.js' %}" defer></script>
+    <script src="{% static 'scripts/products/showOrHideAddCommentForm.js' %}" defer></script>
+    <script src="{% static 'scripts/products/showOrHideFilterForm.js' %}" defer></script>
+    <script src="{% static 'scripts/products/alertInvalidComment.js' %}" defer></script>
+    <script src="{% static 'scripts/products/alertCommentActions.js' %}"></script>
+{% endblock %}
+
+{% block main_content %}
+    <p class="page-title">Детайли</p>
+
+    <div class="main-container">
+        <div class="image-container">
+            <img class="product-image" src="{{ product.product_image }}">
+        </div>
+        <div class="description-container">
+            <strong>Описание:</strong> {{ product.description }}
+        </div>
+        <div class="price-container">
+            <strong>Цена:</strong> {{ product.price|floatformat:2 }} лв.
+        </div>
+        <div class="quantity-container">
+            <strong>Количество:</strong> {{ product.quantity }}
+        </div>
+        <div class="type-container">
+            <strong>Тип продукт:</strong>
+            {% if product.type == 'female' %}
+                Женски продукт
+            {% else %}
+                Мъжки продукт
+            {% endif %}
+        </div>
+
+        {% if user.id == product.owner_id or user.is_superuser %}
+            <div class="buttons-container">
+                <a class="edit-button" href="{% url 'product update' product=product|get_product_name pk=product.pk %}">Редактиране</a>
+                <a class="delete-button" onclick="askForDeletion('{{ product|get_product_name }}', {{ product.pk }})">Изтриване</a>
+            </div>
+        {% endif %}
+        <a class="back-button" href="{% url back_url %}">Назад</a>
+
+        {% if user %}
+            <a class="add-comment-button" onclick="showOrHideAddCommentForm()">Добави коментар</a>
+            <div class="add-comment-container">
+                <form class="add-comment-form" method="POST"
+                      action="{% url 'product details' product=product|get_product_name page=page form_type='add_comment' comment_id=0 pk=product.pk %}">
+                    {{ add_comment_form }}
+                    {% csrf_token %}
+                    <button class="submit-comment-button">
+                        <img class="comment-image"
+                             src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670462400/icons/comment-image_sgqpvz.png">
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+
+        {% if comments %}
+
+            <p class="page-title comments-title">Коментари</p>
+
+            <div class="filter-section">
+                {% include 'partials/filter-products-partial.html' %}
+            </div>
+            {% for comment in comments %}
+                <div class="comment-container">
+                    {% if comment.commentator_id|get_commentator_profile_img %}
+                        <img class="commentator-profile-img"
+                             src="{{ comment.commentator_id|get_commentator_profile_img }}">
+                    {% else %}
+                        <img class="commentator-profile-img"
+                             src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670638269/icons/commentator-no-profile-img_kf8d8x.png">
+                    {% endif %}
+                    {% if user.pk == comment.commentator_id or user.is_superuser %}
+                        <a class="delete-comment"
+                           onclick="alertDeleteComment({{ comment.id }}, '{{ product|get_product_name }}', '{{ page }}', {{ comment.product_id }})">
+                            <img class="delete-comment-logo"
+                                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670530305/icons/delete-comment_lgmmer.png">
+                        </a>
+                        <a class="edit-comment" onclick="showOrHideEditCommentForm()">
+                            <img class="edit-comment-logo"
+                                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670530576/icons/edit-comment_r5756v.png">
+                        </a>
+                        <form class="edit-comment-form" method="POST"
+                              action="{% url 'product details' product=product|get_product_name page=page form_type='edit_comment' comment_id=comment.id pk=product.pk %}">
+                            {{ edit_comment_form }}
+                            <button class="edit-comment-check" onclick="validateEditedComment()">
+                                <img class="edit-comment-check-img"
+                                     src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670613981/icons/check_kq5dgt.png">
+                            </button>
+                            {% csrf_token %}
+                        </form>
+                    {% endif %}
+                    <p class="commentator-username">{{ comment.commentator_id|get_commentator_username }}</p>
+                    <p class="comment">{{ comment.comment }}</p>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <p class="page-title comments-title">Няма коментари!</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

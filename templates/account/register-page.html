@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Регистрация</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/auth_pages_styles/register-page-styles.css' %}">
+    <script src="{% static 'scripts/auth-errors/modifyRegErrorList.js' %}" defer></script>
+    <script src="{% static 'scripts/auth-errors/showAppropriateRules.js' %}" defer></script>
+{% endblock %}
+
+{% block main_content %}
+    <div class="main-content">
+        <div class="form-container">
+
+            <div class="username-rules">
+                <ul>
+                    <li>Потребителското име не може да бъде число</li>
+                    <li>Потребителското име може да съдържа само букви и цифри</li>
+                    <li>Потребителското име трябва да е минимум 3 символа</li>
+                </ul>
+            </div>
+            <div class="password-rules">
+                <ul>
+                    <li>Паролата трябва да е минимум 8 символа</li>
+                    <li>Паролата трябва да съдържа цифри и букви</li>
+                </ul>
+            </div>
+
+            <div class="question-mark-box box1-position"
+                 onmouseenter="showRules('username')"
+                 onmouseleave="hideRules('username')">?
+            </div>
+            <div class="question-mark-box box2-position"
+                 onmouseenter="showRules('password')"
+                 onmouseleave="hideRules('password')">?
+            </div>
+
+
+            <form method="POST" action="{% url 'register page' %}">
+                <div class="username-field">
+                    <label for="{{ form.username.id_for_label }}">Потребителско име</label>
+                    <p class="username-para">
+                        {{ form.username }}
+                    </p>
+                </div>
+                <div class="email-field">
+                    <label for="{{ form.email.id_for_label }}">E-mail</label>
+                    <p class="email-para">
+                        {{ form.email }}
+                    </p>
+                </div>
+                <div class="password1-field">
+                    <label for="{{ form.password1.id_for_label }}">Парола</label>
+                    <p class="password1-para">
+                        {{ form.password1 }}
+                    </p>
+                </div>
+                <div class="password2-field">
+                    <label for="{{ form.password1.id_for_label }}">Потвърди парола</label>
+                    <p class="password2-para">
+                        {{ form.password2 }}
+                    </p>
+                </div>
+                {% csrf_token %}
+                <button>Регистрация</button>
+            </form>
+        </div>
+        <p class="profile-reminder">Вече имате профил?
+            <a class="register-anchor" href="{% url 'login page' %}">Вход</a>
+        </p>
+
+        <div class="list-errors-container">
+            {% if form.username.errors %}
+                <p class="username-error-message">{{ form.username.errors }}</p>
+            {% endif %}
+
+            {% if form.email.errors %}
+                <p class="email-error-message">{{ form.email.errors }}</p>
+            {% endif %}
+
+            {% if form.password2.errors %}
+                <p class="password-error-message">{{ form.password2.errors }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

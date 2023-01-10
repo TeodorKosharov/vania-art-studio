@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Профил</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/auth_pages_styles/profile-page-styles.css' %}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'scripts/profile-page/showOrHideForm.js' %}" defer></script>
+{% endblock %}
+
+{% block main_content %}
+    <p class="profile-title titles">Профил</p>
+    {% if profile_picture_url %}
+        <img src="{{ profile_picture_url }}" class="profile-picture">
+    {% else %}
+        <div class="profile-picture no-img-container" onclick="showOrHideForm()">+</div>
+    {% endif %}
+    <div class="profile-info">
+        <p>Име:
+            {% if profile.first_name %}
+                {{ profile.first_name }}
+            {% else %}
+                Не е зададено
+            {% endif %}
+        </p>
+        <p>Фамилия:
+            {% if profile.last_name %}
+                {{ profile.last_name }}
+            {% else %}
+                Не е зададено
+            {% endif %}
+        </p>
+        <p>Възраст:
+            {% if profile.age %}
+                {{ profile.age }} години
+            {% else %}
+                Не е зададено
+            {% endif %}
+        </p>
+        <p>Град:
+            {% if profile.city %}
+                {{ profile.city }}
+            {% else %}
+                Не е зададено
+            {% endif %}
+        </p>
+        <button class="edit-btn" onclick="showOrHideForm()">Редактиране</button>
+    </div>
+
+    <p class="edit-profile-title titles">Редактиране на профила</p>
+
+    <form class="edit-profile-form" method="POST" action="{% url 'profile page' %}" enctype="multipart/form-data">
+        <div class="first-name-field form-field">
+            <label for="{{ form.first_name.id_for_label }}">Име</label>
+            <p>
+                {{ form.first_name }}
+            </p>
+        </div>
+        <div class="last-name-field form-field">
+            <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+            <p>
+                {{ form.last_name }}
+            </p>
+        </div>
+        <div class="age-field form-field">
+            <label for="{{ form.age.id_for_label }}">Възраст</label>
+            <p>
+                {{ form.age }}
+            </p>
+        </div>
+        <div class="city-field form-field">
+            <label for="{{ form.city.id_for_label }}">Град</label>
+            <p>
+                {{ form.city }}
+            </p>
+        </div>
+        <div class="profile-picture-field form-field">
+            <label for="{{ form.profile_picture.id_for_label }}" class="profile-picture-label">
+                Избери профилна снимка</label>
+            <p>
+                {{ form.profile_picture }}
+            </p>
+        </div>
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="errors-container">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <button class="save-btn action-btn">Запази</button>
+    </form>
+    <button onclick="showOrHideForm()" class="cancel-btn action-btn">Отказ</button>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+@import "product-styles.css";
+
+.separator {
+    height: 100px;
+}
+
+.page-title {
+    margin-left: 575px;
+    font-size: 24px;
+    font-family: Oswald;
+    background-color: #4d4d4d;
+    color: white;
+    width: 300px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+
+.cart-container {
+    margin-top: -125px;
+}
+
+.empty-cart {
+    font-size: 30px;
+    font-family: Oswald;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-left: 570px;
+}
+
+.remove-product-button {
+    margin-left: 5px;
+}

@@ -1,0 +1,33 @@
+.shopping-cart-container {
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 115px;
+    background-color: rgba(0, 0, 0, 0.69);
+    border-radius: 50px;
+    border-style: solid;
+    border-top-color: rgba(166, 166, 166, 0.84);
+    border-left-color: rgba(166, 166, 166, 0.84);
+    border-right-color: rgba(0, 0, 0, 0.25);
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+    opacity: 80%;
+    transition: 0.3s;
+}
+
+.shopping-cart-container:hover {
+    opacity: 100%;
+    transform: scale(1.1);
+}
+
+.shopping-cart, .billing-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.billing-icon {
+    filter: invert(100%);
+}

@@ -1,0 +1,16 @@
+<div class="setting-container view-container">
+    <a class="filter-link">
+        <img class="setting-image"
+             src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670855806/icons/view_tjzgdc.png">
+    </a>
+</div>
+<div class="view-products-form-container">
+    <form method="GET">
+        <label for="{{ view_products_form.products_per_row.id_for_label }}" class="filter-label">
+            Визуализация:
+        </label>
+        {{ view_products_form.products_per_row }}
+        {% csrf_token %}
+        <button class="filter-button">Приложи</button>
+    </form>
+</div>

@@ -1,0 +1,136 @@
+@import "search-box-styles.css";
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.login-link:link, .login-link:visited,
+.register-link:link, .register-link:visited,
+.logout-link:link, .logout-link:visited,
+.profile-link:link, .profile-link:visited {
+    color: black;
+}
+
+.site-header {
+    background-color: #dfdfe1;
+    padding: 3.75em;
+    font-family: Oswald;
+    height: 2.5em;
+}
+
+.site-logo {
+    font-size: 40px;
+    color: #72683F;
+    margin-top: 5px;
+    margin-left: 30px;
+    width: 240px;
+}
+
+.profile-logo {
+    width: 60px;
+    height: 50px;
+}
+
+.account-container {
+    margin-left: 1260px;
+    margin-top: -140px;
+    position: absolute;
+    opacity: 90%;
+}
+
+.account-title {
+    font-size: 20px;
+    margin-left: 70px;
+    margin-top: -50px;
+}
+
+.account-log-reg-titles {
+    font-size: 14px;
+    margin-left: 50px;
+    margin-top: -25px;
+}
+
+.auth-links-container {
+    margin-left: 1295px;
+    margin-top: -90px;
+    width: 120px;
+    height: 100px;
+    position: absolute;
+    opacity: 90%;
+    display: none;
+    text-align: center;
+}
+
+.log-reg-containers-common {
+    width: 100px;
+    height: 25px;
+    position: absolute;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.3s;
+
+}
+
+.login-link {
+    margin-left: -22px;
+    margin-top: 10px;
+    position: absolute;
+}
+
+.login-container:hover, .register-container:hover,
+.logout-container:hover, .profile-container:hover,
+.logout-container:hover, .profile-container:hover {
+    background-color: #4d4d4d;
+    color: white;
+    border-style: outset;
+}
+
+.login-container {
+    margin-left: -30px;
+}
+
+.register-link {
+    margin-left: -42px;
+    margin-top: 40px;
+    position: absolute;
+}
+
+.register-container {
+    margin-left: -10px;
+}
+
+.profile-container {
+    margin-left: 20px;
+    margin-top: 10px;
+    position: absolute;
+    font-size: 16px;
+    text-align: center;
+    height: 25px;
+    width: 100px;
+    border-radius: 10px;
+    transition: 0.3s;
+
+}
+
+.logout-container {
+    margin-left: 20px;
+    margin-top: 40px;
+    position: absolute;
+    font-size: 16px;
+    text-align: center;
+    height: 25px;
+    width: 100px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.profile-logout-links-container {
+    margin-left: 1290px;
+    margin-top: -90px;
+    position: absolute;
+    display: none;
+    height: 100px;
+    width: 140px;
+    opacity: 90%;
+}

@@ -1,0 +1,29 @@
+{% extends 'products/add-product-base.html' %}
+{% load static %}
+{% load filters %}
+
+{% block title %}
+    <title>Редактиране</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product-styles/products-update-styles.css' %}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'scripts/products/alertErrorsWhenAddUpdateProduct.js' %}" defer></script>
+    <script src="{% static 'scripts/products/confUpdateProductPage.js' %}" defer></script>
+{% endblock %}
+
+{% block title_para %}
+    <p class="page-title">Редактиране</p>
+{% endblock %}
+
+{% block start_form %}
+    <form method="POST" action="{% url 'product update' product=product|get_product_name pk=product.pk %}"
+          enctype="multipart/form-data">
+{% endblock %}
+
+{% block end_form %}
+    {{ form.owner_id }}
+    </form>
+{% endblock %}
+

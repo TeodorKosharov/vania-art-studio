@@ -1,0 +1,159 @@
+@font-face {
+    font-family: "Oswald";
+    src: url('../../fonts/Oswald.ttf') format("truetype");
+}
+
+section {
+    height: 400px;
+}
+
+input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: darkgray;
+    font-family: Oswald;
+    font-size: 18px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.50)
+}
+
+input:focus {
+    outline: none;
+    border-color: black;
+}
+
+.search-form-input {
+    border-width: 2px;
+}
+
+.edit-profile-form {
+    font-family: Oswald;
+    font-size: 20px;
+    margin-left: 615px;
+    margin-top: 100px;
+    display: none;
+    position: absolute;
+
+}
+
+.profile-picture {
+    width: 300px;
+    height: 300px;
+    border-style: solid;
+    border-radius: 20px;
+    margin-left: 480px;
+    margin-top: 100px;
+    display: block;
+}
+
+.no-img-container {
+    text-align: center;
+    font-size: 50px;
+    color: #404040;
+    font-family: Lobster-Regular;
+    vertical-align: middle;
+    line-height: 300px;
+    transition: 0.3s;
+}
+
+.no-img-container:hover {
+    background-color: #dbdbdb;
+    font-size: 60px;
+}
+
+.profile-info {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20px;
+    justify-content: center;
+    margin-left: 830px;
+    margin-top: -300px;
+    display: block;
+}
+
+.titles {
+    margin-left: 575px;
+    position: absolute;
+    font-size: 24px;
+    font-family: Oswald;
+    background-color: #4d4d4d;
+    color: white;
+    width: 300px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+
+.edit-profile-title {
+    margin-top: 50px;
+    display: none;
+}
+
+.profile-title {
+    margin-top: -60px;
+    display: block;
+}
+
+.edit-btn {
+    font-family: Oswald;
+    font-size: 20px;
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #4d4d4d;
+    color: white;
+    transition: 0.3s;
+}
+
+.edit-btn:hover, .profile-picture-label:hover,
+.save-btn:hover, .cancel-btn:hover {
+    box-shadow: 4px 4px 3px gray;
+}
+
+.form-field {
+    text-align: center;
+}
+
+.profile-picture-label {
+    border-radius: 20px;
+    padding: 5px 12px 5px 12px;
+    background-color: #4d4d4d;
+    color: white;
+    transition: 0.3s;
+}
+
+.action-btn {
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #3d3d3d;
+    padding: 5px 12px 5px 12px;
+    background-color: #8f8f8f;
+    color: white;
+    font-family: Oswald;
+    font-size: 18px;
+    margin-left: 17px;
+    width: 80px;
+    transition: 0.3s;
+}
+
+.cancel-btn {
+    margin-top: 558px;
+    margin-left: 738px;
+    position: absolute;
+    display: none;
+}
+
+.errors-container {
+    margin-right: 300px;
+    position: absolute;
+    width: 600px;
+}
+
+/* Alert box styles */
+
+.swal2-title, .swal2-html-container, .swal2-confirm {
+    font-family: Oswald;
+}

@@ -1,0 +1,46 @@
+/* Additional changes needed for 4-column view */
+
+.product-container {
+    width: 280px;
+    height: 320px;
+    margin-left: 70px;
+}
+
+.product-image-container {
+    width: 145px;
+    height: 145px;
+    margin-left: 26px;
+    margin-top: 20px;
+}
+
+.product-image {
+    width: 148px;
+    height: 148px;
+}
+
+.product-info {
+    font-size: 16px;
+    margin-left: 26px;
+}
+
+.details-button, .edit-button, .delete-button, .remove-product-button {
+    font-size: 14.5px;
+}
+
+.details-button {
+    margin-left: 26px;
+}
+
+.cart-container {
+    width: 40px;
+    height: 40px;
+    margin-left: 170px;
+}
+
+.cart-img {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: -13px;
+    position: absolute;
+}

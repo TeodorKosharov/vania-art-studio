@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+    {% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles/all-main-styles.css' %}">
+    {% block page_styles_and_scripts %}
+    {% endblock %}
+    <script src="{% static 'scripts/links/showHideAppropriateAuthLinks.js' %}" defer></script>
+    <script src="{% static 'scripts/links/highlightCurrentLink.js' %}" defer></script>
+    <script src="{% static 'scripts/links/showHideAddProducts.js' %}" defer></script>
+    <script src="{% static 'scripts/products/alertCompleteOrder.js' %}" defer></script>
+
+
+    <!-- Enable google font: -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+</head>
+
+<body>
+<header class="site-header" onmouseleave="hideAuthLinksCont()">
+    <a class="site-logo-anchor" href="{% url 'home page' %}"><p class="site-logo">Vania Art Studio</p></a>
+
+    <div class="search-container">
+
+        <form class="search-form" method="GET" action="{% url 'search page' %}">
+            {{ search_form }}
+            {% csrf_token %}
+            <button class="search-button">
+                <img class="search-icon" src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671193514/icons/search_gonshi.png">
+            </button>
+        </form>
+    </div>
+
+    <div class="account-container" onmouseover="showAuthLinksCont()">
+        {% if user.is_staff and not user.is_superuser %}
+            <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1669987880/icons/profile-staff_totfiw.png"
+                 class="profile-logo">
+        {% elif user.is_superuser %}
+            <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670008695/icons/profile-admin_l8pz1i.png"
+                 class="profile-logo">
+        {% else %}
+            <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1669058780/icons/profile-png-crop-final_soccjw.png"
+                 class="profile-logo">
+        {% endif %}
+        <p class="account-title">Акаунт</p>
+
+        {% if not user %}
+            <p class="account-log-reg-titles">Вход/Регистрация</p>
+        {% else %}
+            <p class="account-log-reg-titles">Добре дошли, {{ user.username }}</p>
+        {% endif %}
+    </div>
+
+    {% if not user %}
+        <div class="auth-links-container" onmouseleave="hideAuthLinksCont()">
+            <a class="login-link" href="{% url 'login page' %}">
+                <div class="login-container log-reg-containers-common">Вход</div>
+            </a>
+            <a class="register-link" href="{% url 'register page' %}">
+                <div class="register-container log-reg-containers-common">Регистрация</div>
+            </a>
+        </div>
+    {% else %}
+        <div class="profile-logout-links-container" onmouseleave="hideAuthLinksCont()">
+            <a class="profile-link" href="{% url 'profile page' %}">
+                <div class="profile-container">Профил</div>
+            </a>
+            <a class="logout-link" href="{% url 'logout user' %}">
+                <div class="logout-container">Изход</div>
+            </a>
+        </div>
+    {% endif %}
+</header>
+
+<div class="navi">
+
+    <a class="home-link navi-links" href="{% url 'home page' %}">
+        <div class="home-link-container base-container"><p>Начало</p></div>
+    </a>
+
+    <a class="cards-link navi-links" href="{% url 'cards page' %}">
+        <div class="cards-link-container base-container"><p>Картички</p></div>
+    </a>
+
+    <a class="albums-link navi-links" href="{% url 'albums page' %}">
+        <div class="albums-link-container base-container"><p>Албуми</p></div>
+    </a>
+
+    <a class="frames-link navi-links" href="{% url 'frames page' %}">
+        <div class="frames-link-container base-container"><p>Рамки</p></div>
+    </a>
+
+    <a class="christeningset-link navi-links" href="{% url 'christening set page' %}">
+        <div class="christeningset-link-container base-container"><p>Кръщенета</p></div>
+    </a>
+
+    {% if user.is_staff or user.is_superuser %}
+        <a class="add-product-link navi-links" onmouseenter="showAddProductsMenu()"
+           onmouseleave="hideAddProductsMenu()">
+            <div class="add-product-link-container base-container"><p>Добави +</p></div>
+        </a>
+
+        <div class="add-products" onmouseenter="showAddProductsMenu()" onmouseleave="hideAddProductsMenu()">
+            <a class="add-product add-card" href="{% url 'add card page' %}">
+                <div class="add-product-link-container"><p>Картичка</p></div>
+            </a>
+            <a class="add-product add-album" href="{% url 'add album page' %}">
+                <div class="add-product-link-container"><p>Албум</p></div>
+            </a>
+            <a class="add-product add-frame" href="{% url 'add frame page' %}">
+                <div class="add-product-link-container"><p>Рамка</p></div>
+            </a>
+            <a class="add-product add-christeningset" href="{% url 'add christeningset page' %}">
+                <div class="add-product-link-container"><p>Кръщене</p></div>
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<section class="main">
+    {% block main_content %}
+    {% endblock %}
+    <a class="cart-link" {% if not cart_page %}href="{% url 'shopping cart' %}"{% endif %}>
+        <div class="shopping-cart-container"
+             {% if cart_page %}onclick="alertCompleteOrder({{ is_cart_empty|lower }}, {{ total_price }})" {% endif %}>
+            {% if not cart_page %}
+                <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670204682/icons/shopping_cart_vwyony.png"
+                     class="shopping-cart">
+            {% else %}
+                <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670725112/icons/billing_uyr1as.png"
+                     class="billing-icon">
+            {% endif %}
+        </div>
+    </a>
+</section>
+<footer>
+
+    <div class="about-container">
+        <p class="footer-title">За нас</p>
+        <p class="info-para">За Vania Art Studio</p>
+        <p class="info-para">Доставка</p>
+        <p class="info-para">Лични данни</p>
+        <p class="info-para">Общи условия</p>
+    </div>
+
+    <div class="info-container">
+        <p class="footer-title">Обща информация</p>
+        <p class="info-para">Контакт с нас</p>
+        <p class="info-para">Връщане</p>
+    </div>
+
+    <div class="social-container">
+        <p class="footer-title">Социални мрежи</p>
+        <a class="facebook-link" href="https://www.facebook.com/Vaniaartvjk/">
+            <img class="social-logo"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671064676/icons/facebook_vjhfpp.png">
+        </a>
+        <a class="instagram-link" href="https://www.instagram.com/vania_art_studio/?hl=en">
+            <img class="social-logo"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671064681/icons/instagram_l8bhu5.png">
+        </a>
+        <a class="tiktok-link" href="https://www.tiktok.com/@vania_art_studio">
+            <img class="social-logo"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671064685/icons/tiktok_fmtfks.png">
+        </a>
+    </div>
+
+</footer>
+</body>
+</html>

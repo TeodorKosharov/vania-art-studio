@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filters %}
+
+{% block title %}
+    <title>Начало</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles/home.css' %}">
+    <script src="{% static 'scripts/pageReloadSameLocation.js' %}" defer></script>
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="gallery">
+
+        <div class="products-gallery">
+            <p class="product-title">Картички</p>
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671028788/Home%20page%20photos/home_card_1_fabsef.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059402/Home%20page%20photos/home_card_2_bx5hjm.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671044126/Home%20page%20photos/home_card_3_bx2urg.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671044340/Home%20page%20photos/home_card_4_d3aokn.jpg">
+        </div>
+
+        <div class="products-gallery">
+            <p class="product-title">Албуми</p>
+
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059553/Home%20page%20photos/home_album_2_yu18tp.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059553/Home%20page%20photos/home_album_3_lmmapm.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059726/Home%20page%20photos/home_album_1_ynylor.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059553/Home%20page%20photos/home_album_4_bngoq7.jpg">
+        </div>
+
+        <div class="products-gallery">
+            <p class="product-title">Рамки</p>
+
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060554/Home%20page%20photos/home_frame_1_rn7llx.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060554/Home%20page%20photos/home_frame_2_pj3cgk.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060554/Home%20page%20photos/home_frame_3_zmzuqe.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060554/Home%20page%20photos/home_frame_4_toqbky.jpg">
+        </div>
+
+        <div class="products-gallery">
+            <p class="product-title">Кръщенета</p>
+
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671059987/Home%20page%20photos/home_chr_1_poni26.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060139/Home%20page%20photos/home_chr_2_cburxr.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060139/Home%20page%20photos/home_chr_3_t0jbfd.jpg">
+            <img class="product-image"
+                 src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671060250/Home%20page%20photos/home_chr_4_tdbxgl.jpg">
+        </div>
+
+    </div>
+
+    <div class="comments">
+        <p class="comments-title">Какво казват нашите клиенти</p>
+        <hr class="separator">
+        <p class="comments-title2">Нашите доволни клиенти и тяхната обратна връзка</p>
+
+        {% if comments %}
+            {% if page_obj.has_previous %}
+                <a class="prev-link" href="?page={{ page_obj.previous_page_number }}">
+                    <img class="previous"
+                         src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670976368/icons/next_ko72ck.png">
+                </a>
+            {% endif %}
+
+            {% for comment in comments %}
+                <div class="comment-container">
+                    <img class="quote"
+                         src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670975933/icons/quote_dg9m4e.png">
+                    <p class="comment-description">{{ comment.comment }}</p>
+                    <p class="commentator-username">{{ comment.commentator_id|get_commentator_username }}</p>
+                </div>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="next-link" href="?page={{ page_obj.next_page_number }}">
+                    <img class="next"
+                         src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670976416/icons/next_h73qih.png">
+                </a>
+            {% endif %}
+        {% else %}
+            <p class="no-comments">Няма коментари!</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {#<title>Добави продукт</title>#}
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product-styles/add-products-styles.css' %}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'scripts/products/alertErrorsWhenAddUpdateProduct.js' %}" defer></script>
+{% endblock %}
+
+{% block main_content %}
+    {% block title_para %}
+        {#<p class="page-title">Добави продукт</p>#}
+    {% endblock %}
+
+    <div class="form-container">
+        {% block start_form %}
+            {#<form method="POST" action="{% url 'add product page' %}" enctype="multipart/form-data">#}
+        {% endblock %}
+        <div class="form-field">
+            <label for="{{ form.description.id_for_label }}">Описание</label>
+            <p>
+                {{ form.description }}
+            </p>
+        </div>
+        <div class="form-field">
+            <label for="{{ form.price.id_for_label }}">Цена</label>
+            <p>
+                {{ form.price }}
+            </p>
+        </div>
+        <div class="form-field">
+            <label for="{{ form.quantity.id_for_label }}">Количество</label>
+            <p>
+                {{ form.quantity }}
+            </p>
+        </div>
+        <div class="form-field">
+            <label for="{{ form.type.id_for_label }}">Тип</label>
+            <p>
+                {{ form.type }}
+            </p>
+        </div>
+        <div class="form-field img-field">
+            <label for="{{ form.product_image.id_for_label }}" class="product-img-label">Изображение на
+                продукта</label>
+            <p>
+                {{ form.product_image }}
+            </p>
+        </div>
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="errors-container">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <button>Добави</button>
+        {% block end_form %}
+            {#</form>#}
+        {% endblock %}
+    </div>
+{% endblock %}

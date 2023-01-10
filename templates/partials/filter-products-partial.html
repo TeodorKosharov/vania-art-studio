@@ -1,0 +1,16 @@
+<div class="setting-container filter-container" onclick="showOrHideFilterForm()">
+    <a class="filter-link">
+        <img class="setting-image"
+             src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670373128/icons/filter_yffwlv.png">
+    </a>
+</div>
+<div class="filter-form-container">
+    <form method="GET">
+        <label for="{{ filter_form.field.id_for_label }}" class="filter-label">
+            Критерий:
+        </label>
+        {{ filter_form.field }}
+        {% csrf_token %}
+        <button class="filter-button">Филтриране</button>
+    </form>
+</div>

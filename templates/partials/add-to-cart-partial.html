@@ -1,0 +1,20 @@
+{% if user %}
+    <div class="cart-container">
+        {% if add_to_cart_product == 'card' %}
+            <a class="add-to-cart-link{% if card.quantity == 0 %} out-of-stock {% endif %}"
+               href="{% url 'add to cart' product=add_to_cart_product pk=card.pk %}">
+        {% elif add_to_cart_product == 'album' %}
+            <a class="add-to-cart-link{% if album.quantity == 0 %} out-of-stock {% endif %}"
+               href="{% url 'add to cart' product=add_to_cart_product pk=album.pk %}">
+        {% elif add_to_cart_product == 'frame' %}
+            <a class="add-to-cart-link{% if frame.quantity == 0 %} out-of-stock {% endif %}"
+               href="{% url 'add to cart' product=add_to_cart_product pk=frame.pk %}">
+        {% else %}
+            <a class="add-to-cart-link{% if christeningset.quantity == 0 %} out-of-stock {% endif %}"
+               href="{% url 'add to cart' product=add_to_cart_product pk=christeningset.pk %}">
+        {% endif %}
+        <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670207130/icons/add_to_cart_bhty8i.png"
+             class="cart-img">
+        </a>
+    </div>
+{% endif %}

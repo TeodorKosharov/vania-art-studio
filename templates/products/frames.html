@@ -1,0 +1,32 @@
+{% extends 'products/product-base.html' %}
+
+{% block title %}
+    <title>Рамки</title>
+{% endblock %}
+
+
+{% block product_list %}
+    {% for frame in frames %}
+        <div class="product-container">
+            <div class="product-image-container">
+                <img class="product-image" src="{{ frame.product_image }}">
+            </div>
+            <p class="product-info">Тип:
+                {% if frame.type == 'female' %}
+                    Женски продукт
+                {% else %}
+                    Мъжки продукт
+                {% endif %}
+            </p>
+            <p class="product-info">Цена: {{ frame.price|floatformat:2 }} лв.</p>
+            <p class="product-info">Наличност: {{ frame.quantity }}</p>
+            <a class="details-button"
+               href="{% url 'product details' product='frame' page='products' form_type=None comment_id=0 pk=frame.pk %}">Детайли</a>
+            {% if user.id == frame.owner_id or user.is_superuser %}
+                <a class="edit-button" href="{% url 'product update' product='frame' pk=frame.pk %}">Редактиране</a>
+                <a class="delete-button" onclick="askForDeletion('frame', {{ frame.pk }})">Изтриване</a>
+            {% endif %}
+            {% include 'partials/add-to-cart-partial.html' %}
+        </div>
+    {% endfor %}
+{% endblock %}

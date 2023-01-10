@@ -1,0 +1,33 @@
+{% extends 'products/product-base.html' %}
+{% load static %}
+{% load filters %}
+
+{% block title %}
+    <title>Резултати от търсене</title>
+{% endblock %}
+
+{% block product_list %}
+    {% for product in object_list %}
+        <div class="product-container">
+            <div class="product-image-container">
+                <img class="product-image" src="{{ product.product_image }}">
+            </div>
+            <p class="product-info">Тип:
+                {% if product.type == 'female' %}
+                    Женски продукт
+                {% else %}
+                    Мъжки продукт
+                {% endif %}
+            </p>
+            <p class="product-info">Цена: {{ product.price|floatformat:2 }} лв.</p>
+            <p class="product-info">Наличност: {{ product.quantity }}</p>
+            <a class="details-button"
+               href="{% url 'product details' product=product|get_product_name page='search' form_type=None comment_id=0 pk=product.pk %}">Детайли</a>
+            {% if user.id == product.owner_id or user.is_superuser %}
+                <a class="edit-button" href="{% url 'product update' product=product|get_product_name pk=product.pk %}">Редактиране</a>
+                <a class="delete-button" onclick="askForDeletion('{{ product|get_product_name }}', {{ product.pk }})">Изтриване</a>
+            {% endif %}
+            {% include 'partials/add-to-cart-search-page-partial.html' %}
+        </div>
+    {% endfor %}
+{% endblock %}

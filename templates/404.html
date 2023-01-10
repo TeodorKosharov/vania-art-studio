@@ -1,0 +1,16 @@
+{% extends 'products/product-base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Невалиден ресурс</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles/404.css' %}">
+{% endblock %}
+
+
+{% block main_content %}
+    <img class="image-404" src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1671222740/icons/404_nqfm2l.png">
+    <p class="resource-not-found">Страницата не е намерена!</p>
+{% endblock %}

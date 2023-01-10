@@ -1,0 +1,4 @@
+venv
+media_files
+__pycache__
+.idea

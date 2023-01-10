@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Влизане</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/auth_pages_styles/login-page-styles.css' %}">
+    <script src="{% static 'scripts/auth-errors/modifyLoginErrorList.js' %}" defer></script>
+{% endblock %}
+
+{% block main_content %}
+    <div class="main-content">
+        <div class="form-container">
+            <form method="POST" action="{% url 'login page' %}">
+                <div class="username-field">
+                    <label for="{{ form.username.id_for_label }}">Потребителско име</label>
+                    <p class="username-para">
+                        {{ form.username }}
+                    </p>
+                </div>
+                <div class="password-field">
+                    <label for="{{ form.password.id_for_label }}">Парола</label>
+                    <p class="password-para">
+                        {{ form.password }}
+                    </p>
+                </div>
+                {% csrf_token %}
+                <button>Вход</button>
+            </form>
+        </div>
+
+        <p class="profile-reminder">Все още нямате профил?
+            <a class="register-anchor" href="{% url 'register page' %}">Регистрация</a>
+        </p>
+
+        <div class="list-errors-container">
+            {{ form.errors }}
+            <p class="error-message"></p>
+        </div>
+
+    </div>
+{% endblock %}

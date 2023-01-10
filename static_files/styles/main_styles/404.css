@@ -1,0 +1,23 @@
+section {
+    height: 350px;
+}
+
+.search-button {
+    display: none;
+}
+
+.image-404 {
+    width: 80px;
+    height: 80px;
+    right: 52%;
+    top: 58%;
+    position: absolute;
+}
+
+.resource-not-found {
+    font-family: Oswald;
+    font-size: 30px;
+    right: 45%;
+    top: 45%;
+    position: absolute;;
+}

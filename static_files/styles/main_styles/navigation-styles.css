@@ -1,0 +1,175 @@
+/* Include custom font */
+
+@font-face {
+    font-family: "Lobster-Regular";
+    src: url('../../fonts/Lobster-Regular.ttf') format("truetype");
+}
+
+/* Navigation links styles */
+
+/* Highlight current link */
+
+.highlight-link {
+    background-color: #dfdfe1;
+    color: #333333;
+    font-style: unset;
+    border-radius: 10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.navi {
+    background-color: #f0e4e6;
+    height: 100px;
+}
+
+.navi-links {
+    font-family: 'Lobster-Regular';
+    font-size: 24px;
+    color: #555C66;
+}
+
+.base-container {
+    height: 100px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.base-container:hover {
+    background-color: #dfdfe1;
+    color: #333333;
+    font-style: unset;
+    border-radius: 10px;
+    transform: scale(1.09);
+    height: 95px;
+
+}
+
+/* Home link */
+
+.home-link {
+    margin-left: 70px;
+    position: absolute;
+}
+
+.home-link-container {
+    width: 120px;
+    text-align: center;
+}
+
+/* Cards link */
+
+.cards-link {
+    margin-left: 240px;
+    position: absolute;
+}
+
+.cards-link-container {
+    width: 150px;
+}
+
+/* Albums link */
+
+.albums-link {
+    margin-left: 450px;
+    position: absolute;
+}
+
+.albums-link-container {
+    width: 120px;
+}
+
+/* Frames link */
+
+.frames-link {
+    margin-left: 630px;
+    position: absolute;
+}
+
+.frames-link-container {
+    width: 100px;
+}
+
+/* ChristeningSet link */
+
+.christeningset-link {
+    margin-left: 790px;
+    position: absolute;
+}
+
+.christeningset-link-container {
+    width: 150px;
+}
+
+/* Add product link */
+
+.add-product-link {
+    margin-left: 1350px;
+    position: absolute;
+}
+
+.add-product-link-container {
+    width: 150px;
+}
+
+/* Add product links */
+
+.add-products {
+    margin-left: 1350px;
+    margin-top: 100px;
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    background-color: #f0e4e6;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: none;
+}
+
+.add-product {
+    margin-left: 30px;
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    font-family: Lobster-Regular;
+    font-size: 20px;
+    color: #555C66;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10px;
+    transition: 0.3s;
+}
+
+.add-product:hover {
+    background-color: #dfdfe1;
+    color: #333333;
+    transform: scale(1.09);
+}
+
+.add-card {
+    margin-left: 0px;
+}
+
+.add-album {
+    margin-top: 50px;
+    margin-left: 0px;
+}
+
+.add-frame {
+    margin-top: 100px;
+    margin-left: 0px;
+}
+
+.add-christeningset {
+    margin-top: 150px;
+    margin-left: 0px;
+}

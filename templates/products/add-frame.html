@@ -1,0 +1,18 @@
+{% extends 'products/add-product-base.html' %}
+
+{% block title %}
+    <title>Добави рамка</title>
+{% endblock %}
+
+{% block title_para %}
+    <p class="page-title">Добави рамка</p>
+{% endblock %}
+
+
+{% block start_form %}
+    <form method="POST" action="{% url 'add frame page' %}" enctype="multipart/form-data">
+{% endblock %}
+
+{% block end_form %}
+    </form>
+{% endblock %}

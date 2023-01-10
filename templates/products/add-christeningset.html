@@ -1,0 +1,18 @@
+{% extends 'products/add-product-base.html' %}
+
+{% block title %}
+    <title>Добави кръщене</title>
+{% endblock %}
+
+{% block title_para %}
+    <p class="page-title">Добави кръщене</p>
+{% endblock %}
+
+
+{% block start_form %}
+    <form method="POST" action="{% url 'add christeningset page' %}" enctype="multipart/form-data">
+{% endblock %}
+
+{% block end_form %}
+    </form>
+{% endblock %}

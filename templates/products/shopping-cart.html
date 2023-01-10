@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Кошница</title>
+{% endblock %}
+
+{% block page_styles_and_scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product-styles/shopping-cart-page-styles.css' %}">
+    {% if products_per_row == '4' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/product-styles/four-products-view.css' %}">
+    {% endif %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+
+{% block main_content %}
+    <p class="page-title">Кошница</p>
+    {% if cart_products %}
+
+        {% include 'partials/filter-products-partial.html' %}
+        {% include 'partials/view-products-partial.html' %}
+        <div class="separator"></div>
+
+        {% for product in cart_products %}
+            <div class="product-container">
+                <div class="product-image-container">
+                    <img class="product-image" src="{{ product.product_image }}">
+                </div>
+                <p class="product-info">Тип:
+                    {% if product.type == 'female' %}
+                        Женски продукт
+                    {% else %}
+                        Мъжки продукт
+                    {% endif %}
+                </p>
+                <p class="product-info">Цена: {{ product.price|floatformat:2 }} лв.</p>
+                <p class="product-info">Количество в кошницата: {{ product.cart_quantity }}</p>
+                <a class="details-button"
+                   href="{% url 'product details' product=product.model_name page='cart' form_type=None comment_id=0 pk=product.pk %}">Детайли</a>
+                <div class="cart-container">
+                    <a class="remove-from-cart-link"
+                       href="{% url 'remove from cart' option='one' pk=product.pk %}">
+                        <img src="https://res.cloudinary.com/hhmf7fxle/image/upload/v1670354585/icons/remove_from_cart_x7xhpg.png"
+                             class="cart-img">
+                    </a>
+                </div>
+                <a class="remove-product-button" href="{% url 'remove from cart' option='all' pk=product.pk %}">
+                    Премахване от кошницата
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty-cart">Няма продукти в кошницата!</p>
+    {% endif %}
+{% endblock %}

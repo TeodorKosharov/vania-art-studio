@@ -1,0 +1,52 @@
+input {
+    font-family: Oswald;
+    border-style: solid;
+    border-radius: 10px;
+    height: 20px;
+    width: 200px;
+}
+
+label {
+    font-size: 20px;
+    font-family: Oswald;
+}
+
+button {
+    font-family: Oswald;
+    font-size: 20px;
+    width: 70px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #4d4d4d;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 4px 4px 3px gray;
+}
+
+.search-form {
+    display: none;
+}
+
+.main-content {
+    margin-top: 100px;
+    margin-left: -70px;
+    text-align: center;
+}
+
+.profile-reminder {
+    font-size: 18px;
+    font-family: Oswald;
+}
+
+.error-message {
+    font-size: 17px;
+    font-family: Oswald;
+    color: #c40a0a;
+}
+
+.error-inputs {
+    border-color: #c40a0a;
+}

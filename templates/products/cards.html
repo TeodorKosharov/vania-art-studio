@@ -1,0 +1,30 @@
+{% extends 'products/product-base.html' %}
+
+{% block title %}
+    <title>Картички</title>
+{% endblock %}
+
+{% block product_list %}
+    {% for card in cards %}
+        <div class="product-container">
+            <div class="product-image-container">
+                <img class="product-image" src="{{ card.product_image }}">
+            </div>
+            <p class="product-info">Тип:
+                {% if card.type == 'female' %}
+                    Женски продукт
+                {% else %}
+                    Мъжки продукт
+                {% endif %}
+            </p>
+            <p class="product-info">Цена: {{ card.price|floatformat:2 }} лв.</p>
+            <p class="product-info">Наличност: {{ card.quantity }}</p>
+            <a class="details-button" href="{% url 'product details' product='card' page='products' form_type=None comment_id=0 pk=card.pk %}">Детайли</a>
+            {% if user.id == card.owner_id or user.is_superuser %}
+                <a class="edit-button" href="{% url 'product update' product='card' pk=card.pk %}">Редактиране</a>
+                <a class="delete-button" onclick="askForDeletion('card', {{ card.pk }})">Изтриване</a>
+            {% endif %}
+            {% include 'partials/add-to-cart-partial.html' %}
+        </div>
+    {% endfor %}
+{% endblock %}
